@@ -1,7 +1,10 @@
+import MappersBar from "./MappersBar";
+
 export default function Homepage () {
     return (
         <div className="page" id="home-page">
-            <h2>Homepage</h2>
+            <h3>Homepage</h3>
+            <MappersBar />
         </div>
     )
 }
