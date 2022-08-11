@@ -5,6 +5,7 @@ export default function NavBar () {
             <h3>NavBar</h3>
             <Link to="/">Home</Link>
             <Link to="discover">Discover</Link>
+            <Link to ="create-post">New Post</Link>
         </div>
     )
 }
