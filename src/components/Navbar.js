@@ -4,6 +4,7 @@ export default function NavBar () {
         <div className="component-bar" id="navbar">
             <h3>NavBar</h3>
             <Link to="home">Home</Link>
+            <Link to="discover">Discover</Link>
         </div>
     )
 }
