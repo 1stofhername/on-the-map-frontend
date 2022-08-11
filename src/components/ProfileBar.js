@@ -1,5 +1,7 @@
 export default function ProfileBar () {
     return (
-        <h3>Some profile info</h3>
+        <div className="bar" id="profile">
+            <h3>Some profile info</h3>
+        </div>
     )
 }
