@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>On The Map</h1>
+        <h4>On The Map</h4>
       </header>
       <NavBar />
       <Routes>
