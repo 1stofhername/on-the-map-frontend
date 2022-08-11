@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import NavBar from "./components/NavBar";
+import Homepage from "./components/Homepage";
 
 function App() {
   return (
@@ -7,7 +9,10 @@ function App() {
       <header className="App-header">
         <h1>On The Map</h1>
       </header>
-      
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+      </Routes>
     </div>
   );
 }

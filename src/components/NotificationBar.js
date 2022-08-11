@@ -1,4 +1,4 @@
-function NotificationBar () {
+export default function NotificationBar () {
     return (
         <h2>Notifications</h2>
     )
