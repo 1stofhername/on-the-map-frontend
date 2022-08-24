@@ -10,7 +10,7 @@ export default function CreatePostPage () {
     return (
         <div className="create-post">
         <h3>Create an update!</h3>
-        <form className="new-post-form">
+        <form action="/posts" method="POST" encType='multipart/form-data' className="new-post-form">
             <label>
                 Add a photo:
                 <input onChange={(e)=>{console.log(e.target.value)}} type="file" name="image" />
