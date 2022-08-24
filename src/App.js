@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Homepage from "./components/Homepage";
 import DiscoverPage from './components/DiscoverPage';
 import CreatePostPage from './components/CreatePostPage';
+import LoginPage from './components/LoginPage';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/discover" element={<DiscoverPage />} />
-        <Route path="/create-post" element={ <CreatePostPage />} /> 
+        <Route path="/create-post" element={ <CreatePostPage />} />
+        <Route path='/login' element={ <LoginPage />} /> 
       </Routes>
     </div>
   );
