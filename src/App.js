@@ -11,13 +11,13 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
-  const handleLogin = (loginFormData) => {
-    const [email, password] = loginFormData;
-    console.log("email:" `${email}`, "password:" `${password}`);
-    setIsLoggedIn(true);
-    // fetch("http://localhost:9292/")
-    
-  };
+  function handleLogin (data) {
+    console.log(data);
+  }
+
+  function hello (data){
+    console.log("Hello")
+  }
 
   return (
     <div className="App">
@@ -25,12 +25,12 @@ function App() {
         <h4>On The Map</h4>
       </header>
       {isLoggedIn ? <NavBar /> : null}
-      {!isLoggedIn? <LoginPage /> : null }
+      {!isLoggedIn? <LoginPage handleLogin={handleLogin} /> : null }
       <Routes>
         <Route path="/home" element={<Homepage logInStatus={isLoggedIn} />} />
         <Route path="/discover" element={<DiscoverPage />} />
         <Route path="/create-post" element={ <CreatePostPage />} />
-        <Route path='/login' element={ <LoginPage handleLogin={handleLogin} />} /> 
+        <Route path='/login' element={ <LoginPage />} /> 
       </Routes>
     </div>
   );

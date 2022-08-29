@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-export default function LoginPage ( handleLogin ) {
+export default function LoginPage ({ handleLogin }) {
 
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const loginFormData = {
         email: `${email}`,
         password: `${password}`
@@ -17,11 +17,9 @@ export default function LoginPage ( handleLogin ) {
         setPassword(e.target.value);
     }
 
-    function handleSubmit (e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(loginFormData);
-
-        
+        handleLogin(loginFormData);
     }
 
     return (
