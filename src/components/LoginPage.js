@@ -33,7 +33,7 @@ export default function LoginPage ({ handleLogin }) {
                 </label>
                 <label>
                     Password:
-                    <input type="text" name="password" placeholder="Password" onChange={handlePasswordChange} />
+                    <input type="password" name="password" placeholder="Password" onChange={handlePasswordChange} />
                 </label>
                 <input type="submit" value="Log In" />
             </form>

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import NavBar from "./components/NavBar";
 import Homepage from "./components/Homepage";
@@ -12,12 +12,10 @@ function App() {
   const [user, setUser] = useState(null);
 
   function handleLogin (data) {
-    console.log(data);
-  }
-
-  function hello (data){
-    console.log("Hello")
-  }
+    const {email, password}=data;
+      fetch(`http://localhost:9292/login/${email}&${password}`)
+      .then((r)=>r.json(console.log(r)));
+  };
 
   return (
     <div className="App">
