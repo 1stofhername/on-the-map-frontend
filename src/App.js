@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './App.css';
 import NavBar from "./components/NavBar";
@@ -8,19 +8,28 @@ import CreatePostPage from './components/CreatePost';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [user, setUser] = useState(null);
+  const navigate=useNavigate();
+  let isLoggedIn = JSON.parse(window.sessionStorage.getItem('isLoggedIn'));
+  let user = JSON.parse(window.sessionStorage.getItem('user'));
 
   function handleLogin (data) {
     const {email, password}=data;
       fetch(`http://localhost:9292/login/${email}&${password}`)
       .then((r)=>r.json())
       .then((data)=>{
-        setIsLoggedIn(true);
-        setUser(data);
+        // setIsLoggedIn(true);
+        window.sessionStorage.setItem('user', JSON.stringify((data)));
       })
+      .then(()=>{
+        window.sessionStorage.setItem('isLoggedIn', 'true');
+      })
+      .then(navigate("/"))
       
   };
+
+  
 
   return (
     <div className="App">
@@ -30,7 +39,7 @@ function App() {
       {isLoggedIn ? <NavBar /> : null}
       {!isLoggedIn? <LoginPage handleLogin={handleLogin} /> : null }
       <Routes>
-        <Route path="/home" element={<Homepage logInStatus={isLoggedIn} user={user} />} />
+        <Route path="/" element={<Homepage isLoggedIn={isLoggedIn} user={user} />} />
         <Route path="/discover" element={<DiscoverPage />} />
         <Route path="/create-post" element={ <CreatePostPage />} />
         <Route path='/login' element={ <LoginPage />} /> 
