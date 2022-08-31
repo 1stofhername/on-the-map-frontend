@@ -9,7 +9,7 @@ export default function Homepage ({ user, isLoggedIn }) {
             <div className="content-container">
                 <h2>Hello {user.first_name}</h2>
                 <NotificationsContainer />
-                <MappersContainer />
+                <MappersContainer id={user.id} />
             </div>:null}
         </div>
     )

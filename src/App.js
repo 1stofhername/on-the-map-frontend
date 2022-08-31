@@ -12,20 +12,19 @@ function App() {
   // const [user, setUser] = useState(null);
   const navigate=useNavigate();
   let isLoggedIn = JSON.parse(window.sessionStorage.getItem('isLoggedIn'));
-  let user = JSON.parse(window.sessionStorage.getItem('user'));
+  let user = JSON.parse(sessionStorage.getItem('user'));
 
   function handleLogin (data) {
     const {email, password}=data;
       fetch(`http://localhost:9292/login/${email}&${password}`)
       .then((r)=>r.json())
       .then((data)=>{
-        // setIsLoggedIn(true);
         window.sessionStorage.setItem('user', JSON.stringify((data)));
       })
       .then(()=>{
         window.sessionStorage.setItem('isLoggedIn', 'true');
       })
-      .then(navigate("/"))
+      .then(()=>{navigate("/");})
       
   };
 
