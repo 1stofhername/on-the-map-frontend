@@ -10,6 +10,7 @@ import LoginPage from './components/LoginPage';
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [user, setUser] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   const navigate=useNavigate();
   let isLoggedIn = JSON.parse(window.sessionStorage.getItem('isLoggedIn'));
   let user = JSON.parse(sessionStorage.getItem('user'));
@@ -20,6 +21,7 @@ function App() {
       .then((r)=>r.json())
       .then((data)=>{
         window.sessionStorage.setItem('user', JSON.stringify((data)));
+        setIsLoaded(true);
       })
       .then(()=>{
         window.sessionStorage.setItem('isLoggedIn', 'true');
@@ -27,8 +29,6 @@ function App() {
       .then(()=>{navigate("/");})
       
   };
-
-  
 
   return (
     <div className="App">
@@ -38,8 +38,7 @@ function App() {
       {isLoggedIn ? <NavBar /> : null}
       {!isLoggedIn? <LoginPage handleLogin={handleLogin} /> : null }
       <Routes>
-        <Route path="/" element={<Homepage isLoggedIn={isLoggedIn} user={user} />} />
-        <Route path="/discover" element={<DiscoverPage />} />
+        <Route path="/" element={<Homepage isLoaded={isLoaded} isLoggedIn={isLoggedIn} user={user} />} />
         <Route path="/create-post" element={ <CreatePostPage />} />
         <Route path='/login' element={ <LoginPage />} /> 
       </Routes>

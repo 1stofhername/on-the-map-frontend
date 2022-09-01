@@ -1,5 +1,5 @@
 import MappersContainer from "./MappersContainer";
-import NotificationsContainer from "./NotificationsContainer";
+import DiscoverContainer from "./DiscoverContainer";
 
 export default function Homepage ({ user, isLoggedIn }) {
 
@@ -8,7 +8,7 @@ export default function Homepage ({ user, isLoggedIn }) {
             {isLoggedIn?
             <div className="content-container">
                 <h2>Hello {user.first_name}</h2>
-                <NotificationsContainer />
+                <DiscoverContainer />
                 <MappersContainer id={user.id} />
             </div>:null}
         </div>
